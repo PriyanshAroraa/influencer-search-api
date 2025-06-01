@@ -5,7 +5,9 @@ services:
     runtime: python
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app.main:app --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
-    env:
-      GEMINI_API_KEY: your_gemini_api_key
-      PORT: 8000
+    envVars:
+      - key: GEMINI_API_KEY
+        value: your_actual_gemini_api_key_here
+      - key: PORT
+        value: 8000
     healthCheckPath: /health
